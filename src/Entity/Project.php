@@ -3,7 +3,6 @@
 namespace App\Entity;
 
 use App\Repository\ProjectRepository;
-use Doctrine\DBAL\Types\DateTimeType;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -39,9 +38,9 @@ class Project
     private $imageUrl;
 
     /**
-     * @ORM\Column(type="date", length=255)
+     * @ORM\Column(type="datetime")
      */
-    private $creationDate;
+    private $createdAt;
 
     public function getId(): ?int
     {
@@ -96,14 +95,14 @@ class Project
         return $this;
     }
 
-    public function getCreationDate(): ? DateTimeType
+    public function getCreatedAt(): ?\DateTimeInterface
     {
-        return $this->creationDate;
+        return $this->createdAt;
     }
 
-    public function setCreationDate(string $creationDate): self
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
     {
-        $this->creationDate = $creationDate;
+        $this->createdAt = $createdAt;
 
         return $this;
     }
